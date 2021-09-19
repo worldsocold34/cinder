@@ -74,7 +74,7 @@
         "compat[" + i + "][" + j + "]"
       ).value;
       document.getElementById("compat[" + j + "][" + i + "]").value = value;
-      var display_str = value + " % Compatible";
+      var display_str = "$" + value;
       if (value == 0) {
         display_str = "Invalid Pair";
       }
@@ -164,7 +164,7 @@
         var input = document.createElement("input");
         input.name = "compat[" + i + "][" + N + "]";
         input.setAttribute("id", input.name);
-        input.type = "range";
+        input.type = "text";
         console.log(i + " " + N);
         (function (x, y) {
           //a copy is passed, accessible as marker inside this function
@@ -178,7 +178,7 @@
 
           var label = document.createElement("p");
           label.setAttribute("id", "compat_label[" + i + "][" + N + "]");
-          label.innerHTML = "50 % Compatible";
+          label.innerHTML = "";
           new_col.appendChild(document.createElement("br"));
           new_col.appendChild(label);
         } else {
@@ -210,11 +210,11 @@
             };
           })(N, i);
           input.setAttribute("id", input.name);
-          input.type = "range";
+          input.type = "text";
           new_col.appendChild(input);
           var label = document.createElement("p");
           label.setAttribute("id", "compat_label[" + N + "][" + i + "]");
-          label.innerHTML = "50 % Compatible";
+          label.innerHTML = "";
           new_col.appendChild(document.createElement("br"));
           new_col.appendChild(label);
         } else {

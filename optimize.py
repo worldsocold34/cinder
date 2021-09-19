@@ -89,6 +89,9 @@ def general_optimize_iterated(compat_matrix, mps_matrix):
 
     # Run sampler
     N = compat_matrix.shape[0] / 2
+    print(N)
+    print(compat_matrix)
+    # print(compat_matrix.shape, mps_matrix)
     result = general_optimize(compat_matrix, mps_matrix, pairing_cost, double_pairing_cost, numruns)
     print(result)
         
