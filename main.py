@@ -3,7 +3,7 @@ import numpy as np
 import datetime
 import os, csv, uuid
 import re
-# from optimize import general_optimize_iterated
+from optimize import general_optimize_iterated
 
 #
 #########
@@ -25,10 +25,10 @@ def results():
     print(dict(request.form))
     names, compat = extract_data(dict(request.form))
     mps = np.ceil(compat)
-    # best = general_optimize_iterated(compat, mps)
+    best = general_optimize_iterated(compat, mps)
     pairs = []
-    # for x, y in best:
-    #     pairs.append((names[x], names[y]))
+    for x, y in best:
+        pairs.append((names[x], names[y]))
     print(pairs)
     return render_template("results.html", pairs=pairs)
 
