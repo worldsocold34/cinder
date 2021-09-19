@@ -120,7 +120,7 @@
         for (var i = 0; i < N; i++) {
           var col = document.createElement("td");
           document.getElementById("compat" + i).appendChild(col);
-          col.setAttribute("id", "compat" + i + "." + N);
+          col.setAttribute("id", "compat[" + i + "][" + N +"]");
           col.innerHTML = "N/A";
         }
 
