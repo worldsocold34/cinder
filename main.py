@@ -28,7 +28,6 @@ def results():
 
 
 def extract_data(form_dict):
-    print("hjafhsldjfhasljdhfljkasf")
     print(form_dict)
     N = int(sum(1 for key in form_dict.keys() if (key.startswith("name") or key.startswith("car"))))
     names = []
