@@ -38,13 +38,14 @@ def extract_data(form_dict):
     for i in name_nums:
         names.append(form_dict["names[" + str(i) + "]"])
 
-    compat = np.zeros([2*N, 2*N])
+    compat = np.zeros([2*N, 2*N], dtype=np.float)
     for i in range(N):
         for j in range(N):
             if i != j + N:
                 num_string = name_nums[j]
-                compat[i, j+N] = int(form_dict["compat[" + str(i) + "][" + num_string + "]"]) * 0.01
-                compat[j+N, i] = int(form_dict["compat[" + str(i) + "][" + num_string + "]"]) * 0.01
+                compat[i, j+N] = int(form_dict["compat[" + str(i) + "][" + num_string + "]"])
+                compat[j+N, i] = int(form_dict["compat[" + str(i) + "][" + num_string + "]"])
+    compat = compat / compat.max()
     return names, compat
 
 if __name__ == '__main__':
