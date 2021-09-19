@@ -15,6 +15,8 @@ def home():
     return render_template("home.html")
 @app.route('/results', methods=['GET', 'POST'])
 def results():
+    print("fuck")
+    print(dict(request.form))
     names, compat = extract_data(dict(request.form))
     mps = np.ceil(compat)
     best = general_optimize_iterated(compat, mps)
@@ -26,8 +28,9 @@ def results():
 
 
 def extract_data(form_dict):
-    # N = int(sum(1 for key in form_dict.keys() if key.startswith("name")))
-    N = int(sum(1 for key in form_dict.keys()))
+    print("hjafhsldjfhasljdhfljkasf")
+    print(form_dict)
+    N = int(sum(1 for key in form_dict.keys() if (key.startswith("name") or key.startswith("car"))))
     names = []
     for i in range(N):
         names.append(form_dict["names[" + str(i) + "]"])
