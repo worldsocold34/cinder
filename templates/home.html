@@ -112,6 +112,7 @@
         var car_price = car_info[1];
         c.name = "names[" + N + "]";
         var another = document.createElement("input");
+        another.setAttribute("id", "names[" + N + "]");
         another.name = "names[" + N + "]";
         c.appendChild(another);
         c.innerText = car_name + ": $" + car_price;

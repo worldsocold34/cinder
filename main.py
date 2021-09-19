@@ -13,6 +13,12 @@ app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def home():
     return render_template("home.html")
+
+@app.route('/test', methods=['POST'])
+def test():
+    print(dict(request.form))
+    return "Test"
+
 @app.route('/results', methods=['GET', 'POST'])
 def results():
     print("fuck")
@@ -29,16 +35,18 @@ def results():
 
 def extract_data(form_dict):
     print(form_dict)
-    N = int(sum(1 for key in form_dict.keys() if (key.startswith("name") or key.startswith("car"))))
-    names = []
-    for i in range(N):
+    name_nums = [key[6] for key in form_dict.keys() if key.startswith("name")]
+    N = len(name_nums)
+    names = ["Ford", "Lexus", "BMW", "Honda"]
+    for i in name_nums:
         names.append(form_dict["names[" + str(i) + "]"])
 
-    compat = np.zeros([N, N])
+    compat = np.zeros([2*N, 2*N])
     for i in range(N):
         for j in range(N):
             if i != j:
-                compat[i, j] = int(form_dict["compat[" + str(i) + "][" + str(j) + "]"]) * 0.01
+                num_string = name_nums[j]
+                compat[i, j] = int(form_dict["compat[" + str(i) + "][" + num_string + "]"]) * 0.01
     return names, compat
 
 if __name__ == '__main__':
